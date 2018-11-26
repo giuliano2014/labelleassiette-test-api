@@ -10,7 +10,11 @@ var mongoose = require('mongoose');
 //Set up default mongoose connection
 var mongoDB = 'mongodb://giuliano:killbill2018@ds117164.mlab.com:17164/labelleassiette-test-api';
 
-mongoose.connect(mongoDB, { useNewUrlParser: true });
+mongoose.connect(mongoDB, {
+  useCreateIndex: true,
+  useNewUrlParser: true,
+});
+
 // Get Mongoose to use the global promise library
 mongoose.Promise = global.Promise;
 //Get the default connection
@@ -26,6 +30,7 @@ db.once('open', function() {
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var ingredientsRouter = require('./routes/ingredients');
 
 var app = express();
 
@@ -40,7 +45,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/api/users', usersRouter);
+app.use('/api/ingredients', ingredientsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
