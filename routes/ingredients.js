@@ -22,8 +22,15 @@ router.route('/')
 // With pagination
 router.route('/:page/:limit')
   .get((req, res) => {
+    var query = {};
+    var options = {
+      page: parseInt(req.params.page) + 1,
+      limit: parseInt(req.params.limit),
+      sort: { createdAt: -1 },
+    };
+
     // Display ingredient(s) with a pagination
-    Ingredient.paginate({}, { page: parseInt(req.params.page) + 1, limit: parseInt(req.params.limit) })
+    Ingredient.paginate(query, options)
       .then(data => res.status(200).json(data))
       .catch(err => res.json(err));
   });
