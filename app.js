@@ -1,62 +1,32 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var cors = require('cors');
+import createError from 'http-errors';
+import express from 'express';
+import path from 'path';
+import cookieParser from 'cookie-parser';
+import logger from 'morgan';
+import cors from 'cors';
 
-//Import the mongoose module
-var mongoose = require('mongoose');
+import mongoDB from './conf/mongoDB';
+import indexRouter from './routes/index';
+import ingredientsRouter from './routes/ingredients';
 
-//Set up default mongoose connection
-var mongoDB = 'mongodb://giuliano:killbill2018@ds117164.mlab.com:17164/labelleassiette-test-api';
-
-mongoose.connect(mongoDB, {
-  useCreateIndex: true,
-  useNewUrlParser: true,
-});
-
-// Get Mongoose to use the global promise library
-mongoose.Promise = global.Promise;
-//Get the default connection
-var db = mongoose.connection;
-
-// Bind connection to error event (to get notification of connection errors)
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-
-// Bind connection to success event
-db.once('open', function() {
-  console.log('MongoDB connection success');
-});
-
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var ingredientsRouter = require('./routes/ingredients');
-
-var app = express();
-
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+const app = express();
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
 app.use('/', indexRouter);
-app.use('/api/users', usersRouter);
 app.use('/api/ingredients', ingredientsRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use((req, res, next) => {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use((err, req, res, next) => {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};

@@ -1,7 +1,7 @@
-var mongoose = require('mongoose');
-var mongoosePaginate = require('mongoose-paginate');
+import mongoose from 'mongoose';
+import mongoosePaginate from 'mongoose-paginate';
 
-var IngredientSchema = new mongoose.Schema({
+const IngredientSchema = new mongoose.Schema({
     name: {
       type: String,
       required: [true, 'Name is required'],
@@ -10,7 +10,7 @@ var IngredientSchema = new mongoose.Schema({
     },
     quantity: {
       type: Number,
-      required: [true, 'Quantity is required'],
+      default: 0,
     },
 }, { timestamps: true });
 
