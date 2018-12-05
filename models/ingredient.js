@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var mongoosePaginate = require('mongoose-paginate');
 
 var IngredientSchema = new mongoose.Schema({
     name: {
@@ -12,5 +13,7 @@ var IngredientSchema = new mongoose.Schema({
       required: [true, 'Quantity is required'],
     },
 }, { timestamps: true });
+
+IngredientSchema.plugin(mongoosePaginate);
 
 module.exports = mongoose.model('ingredients', IngredientSchema);
