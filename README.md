@@ -8,14 +8,16 @@ I've used Express Generator and MongoDB.
 
 1. git clone of the repository
 
-2. git fetch --all
+2. cd labelleassiette-test-api
 
-3. git checkout develop
+3. git fetch --all
 
-4. yarn or npm i
+4. git checkout develop
 
-5. yarn start:dev or npm run start:dev
+5. yarn or npm i
 
-6. go to http://localhost:3000/
+6. yarn start:dev or npm run start:dev
+
+7. go to http://localhost:3000/
 
 **Enjoy :)**
