@@ -1,6 +1,6 @@
 # labelleassiette-test-api
 
-This is only the API crud of test.
+This is only the API crud of the test.
 
 I've used Express Generator and MongoDB.
 
