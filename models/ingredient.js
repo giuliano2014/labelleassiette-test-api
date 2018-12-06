@@ -10,7 +10,6 @@ const IngredientSchema = new mongoose.Schema({
     },
     quantity: {
       type: Number,
-      default: 0,
     },
 }, { timestamps: true });
 
