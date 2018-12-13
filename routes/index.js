@@ -6,4 +6,4 @@ router.get('/', (req, res) => {
   res.json({ title: 'Express' });
 });
 
-module.exports = router;
+export default router;

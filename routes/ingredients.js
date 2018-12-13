@@ -56,4 +56,4 @@ router.route('/:id')
       .catch(err => res.json(err));
   });
 
-module.exports = router;
+export default router;
