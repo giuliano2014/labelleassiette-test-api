@@ -3,7 +3,7 @@ import express from 'express';
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.json({ title: 'Express' });
+  res.json({ title: 'API test "La belle assiette"' });
 });
 
-module.exports = router;
+export default router;

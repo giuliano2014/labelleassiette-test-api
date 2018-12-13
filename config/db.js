@@ -1,7 +1,9 @@
 import mongoose from 'mongoose';
 import {} from 'dotenv/config';
 
-const mongoDB = `mongodb://${process.env.DATABASE_USER}:${process.env.DATABASE_PASSWORD}@ds117164.mlab.com:17164/${process.env.DATABASE_NAME}`;
+import { DATABASE_NAME, DATABASE_USER, DATABASE_PASSWORD } from './credentials';
+
+const mongoDB = `mongodb://${DATABASE_USER}:${DATABASE_PASSWORD}@ds117164.mlab.com:17164/${DATABASE_NAME}`;
 
 mongoose.connect(mongoDB, {
   useCreateIndex: true,

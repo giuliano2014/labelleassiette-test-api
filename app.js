@@ -5,7 +5,7 @@ import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import cors from 'cors';
 
-import mongoDB from './conf/mongoDB';
+import db from './config/db';
 import indexRouter from './routes/index';
 import ingredientsRouter from './routes/ingredients';
 
@@ -36,4 +36,4 @@ app.use((err, req, res, next) => {
   res.render('error');
 });
 
-module.exports = app;
+export default app;
