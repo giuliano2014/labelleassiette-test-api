@@ -15,4 +15,4 @@ const IngredientSchema = new mongoose.Schema({
 
 IngredientSchema.plugin(mongoosePaginate);
 
-module.exports = mongoose.model('ingredients', IngredientSchema);
+export default mongoose.model('ingredients', IngredientSchema);
